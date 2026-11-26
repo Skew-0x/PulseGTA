@@ -17,6 +17,7 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 UPDATE_DIR = os.path.join(BASE_DIR, "update")
 MANIFEST_PATH = os.path.join(BASE_DIR, "manifest.json")
 INDEX_PATH = os.path.join(BASE_DIR, ".gtax3_index.json")
+HASH_CACHE_PATH = os.path.join(BASE_DIR, ".base_hash_cache.json")
 
 
 def compute_sha256(file_path: str) -> str:
@@ -52,9 +53,35 @@ def main() -> int:
     if os.path.isfile(INDEX_PATH):
         try:
             with open(INDEX_PATH, "r", encoding="utf-8") as f:
-                base_index = json.load(f)
+                raw_idx = json.load(f)
+                base_index = raw_idx.get("index", raw_idx)
         except Exception as e:
             print(f"WARN: could not load {INDEX_PATH}: {e}")
+
+    base_hashes = {}
+    if os.path.isfile(HASH_CACHE_PATH):
+        try:
+            with open(HASH_CACHE_PATH, "r", encoding="utf-8") as f:
+                base_hashes = json.load(f)
+        except Exception as e:
+            print(f"WARN: could not load {HASH_CACHE_PATH}: {e}")
+
+    # Build lower-case lookups for base game files
+    base_info_by_lower = {}
+    for path, info in base_hashes.items():
+        rel = path.replace("\\", "/")
+        idx_info = base_index.get(path) or base_index.get(rel)
+        gs = idx_info[0] if isinstance(idx_info, list) and len(idx_info) >= 3 else 0
+        ge = idx_info[1] if isinstance(idx_info, list) and len(idx_info) >= 3 else 0
+        fo = idx_info[2] if isinstance(idx_info, list) and len(idx_info) >= 3 else 0
+        base_info_by_lower[rel.lower()] = {
+            "path": rel,
+            "size": info.get("size", 0),
+            "sha256": info.get("sha256", ""),
+            "gs": gs,
+            "ge": ge,
+            "fo": fo,
+        }
 
     # Collect all update files
     update_files = {}
@@ -87,7 +114,6 @@ def main() -> int:
 
         existing = path_map.get(rel_lower)
         if existing:
-            # Check if update info is already applied
             if (
                 existing.get("sha256") != uinfo["sha256"]
                 or existing.get("size") != uinfo["size"]
@@ -102,7 +128,7 @@ def main() -> int:
                 changed = True
                 print(f"[UPDATE] {uinfo['path']} -> sha256={uinfo['sha256'][:8]}... size={uinfo['size']}")
         else:
-            # New file not previously in base game
+            base_b = base_info_by_lower.get(rel_lower, {})
             new_entry = {
                 "path": uinfo["path"],
                 "size": uinfo["size"],
@@ -111,9 +137,9 @@ def main() -> int:
                 "patch_asset_url": patch_asset_url,
                 "patch_size": uinfo["size"],
                 "patch_sha256": uinfo["sha256"],
-                "gs": 0,
-                "ge": 0,
-                "fo": 0,
+                "gs": base_b.get("gs", 0),
+                "ge": base_b.get("ge", 0),
+                "fo": base_b.get("fo", 0),
             }
             file_list.append(new_entry)
             path_map[rel_lower] = new_entry
@@ -127,13 +153,13 @@ def main() -> int:
         p_url = fe.get("patch_url", "")
         if f"/{REPO}/{BRANCH}/update/" in p_url and p_lower not in update_files:
             # File was removed from update/
-            base_info = base_index.get(fe["path"]) or base_index.get(p_lower)
+            base_info = base_info_by_lower.get(p_lower)
             if base_info:
-                fe["size"] = base_info.get("raw_size", fe.get("size", 0))
-                fe["sha256"] = base_info.get("raw_sha256", fe.get("sha256", ""))
-                fe["gs"] = base_info.get("gs", 0)
-                fe["ge"] = base_info.get("ge", 0)
-                fe["fo"] = base_info.get("fo", 0)
+                fe["size"] = base_info["size"]
+                fe["sha256"] = base_info["sha256"]
+                fe["gs"] = base_info["gs"]
+                fe["ge"] = base_info["ge"]
+                fe["fo"] = base_info["fo"]
                 fe["patch_url"] = ""
                 fe["patch_asset_url"] = ""
                 fe["patch_size"] = 0
@@ -142,12 +168,32 @@ def main() -> int:
                 changed = True
                 print(f"[RESTORE BASE] {fe['path']}")
             else:
-                # Was an added file that is now removed
                 changed = True
                 print(f"[DELETE] {fe['path']}")
         else:
             retained_list.append(fe)
 
+    # 3. Ensure any base game file that might have been accidentally removed is restored
+    existing_lowers = {fe["path"].lower() for fe in retained_list}
+    for b_lower, b_info in base_info_by_lower.items():
+        if b_lower not in existing_lowers:
+            retained_list.append({
+                "path": b_info["path"],
+                "size": b_info["size"],
+                "sha256": b_info["sha256"],
+                "patch_url": "",
+                "patch_asset_url": "",
+                "patch_size": 0,
+                "patch_sha256": "",
+                "gs": b_info["gs"],
+                "ge": b_info["ge"],
+                "fo": b_info["fo"],
+            })
+            changed = True
+            print(f"[RESTORE MISSING BASE] {b_info['path']}")
+
+    # Keep file_list sorted by path
+    retained_list.sort(key=lambda x: x["path"].lower())
     manifest["file_list"] = retained_list
 
     if changed:
