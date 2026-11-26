@@ -1,0 +1,14 @@
+{
+  "news": [
+    {
+      "id": "launch-1",
+      "date": "26.11",
+      "badge": "НОВОСТИ",
+      "title": "PulseMTA Launcher",
+      "subtitle": "Запуск обновлённого лаунчера",
+      "body": "Лаунчер проверяет файлы сборки по SHA-256 и скачивает только изменившиеся файлы из репозитория GitHub.",
+      "image": "welcome.png",
+      "url": "https://pulse-mta.ru"
+    }
+  ]
+}
