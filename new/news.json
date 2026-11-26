@@ -4,9 +4,9 @@
       "id": "launch-1",
       "date": "26.11",
       "badge": "НОВОСТИ",
-      "title": "PulseMTA Launcher",
-      "subtitle": "Запуск обновлённого лаунчера",
-      "body": "Лаунчер проверяет файлы сборки по SHA-256 и скачивает только изменившиеся файлы из репозитория GitHub.",
+      "title": "PulseMTA",
+      "subtitle": "Добро пожаловать в игру PulseMTA",
+      "body": "Добро пожаловать на наш проект! Желаем приятной игры.",
       "image": "welcome.png",
       "url": "https://pulse-mta.ru"
     }
