@@ -1,5 +1,5 @@
 {
-  "version": "1.0.1",
+  "version": "1.0.2",
   "format": "GTAX3",
   "algorithm": "LZMS",
   "entries": 1365,
@@ -4735,18 +4735,6 @@
       "gs": 23,
       "ge": 6084891,
       "fo": 16348716
-    },
-    {
-      "path": "Multi Theft Auto.exe",
-      "size": 678400,
-      "sha256": "52dc242392ed77b91cde247c002934dd1372c8ef354679af403643460310d439",
-      "patch_url": "https://raw.githubusercontent.com/Skew-0x/PulseGTA/main/update/Multi%20Theft%20Auto.exe",
-      "patch_asset_url": "https://api.github.com/repos/Skew-0x/PulseGTA/contents/update/Multi%20Theft%20Auto.exe?ref=main",
-      "patch_sha256": "52dc242392ed77b91cde247c002934dd1372c8ef354679af403643460310d439",
-      "patch_size": 678400,
-      "gs": 23,
-      "ge": 6084891,
-      "fo": 107
     },
     {
       "path": "mods/deathmatch/client.dll",
