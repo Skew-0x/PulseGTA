@@ -1,10 +1,10 @@
 {
-  "version": "1.0.1",
+  "version": "1.0.0",
   "format": "GTAX3",
   "algorithm": "LZMS",
   "entries": 1365,
-  "files": 1272,
-  "total_raw_bytes": 12273803765,
+  "files": 1270,
+  "total_raw_bytes": 12273793976,
   "total_payload_bytes": 12273847370,
   "total_packed_bytes": 3990463759,
   "base_url": "https://github.com/Skew-0x/PulseGTA/releases/download/v1.0.0/",
@@ -6837,15 +6837,6 @@
       "patch_size": 0
     },
     {
-      "path": "mta/dumps/private/README.txt",
-      "size": 88,
-      "sha256": "efc12d6aaca05c9b39018584e4eeb526d2cfdf5ef44c85bcadf34f14ee875c16",
-      "patch_url": "",
-      "patch_asset_url": "",
-      "patch_sha256": "",
-      "patch_size": 0
-    },
-    {
       "path": "mta/game_sa.dll",
       "size": 1195520,
       "sha256": "cf7514d6848eaee7abd1dd2f8b86eb6ad4ee13e22d424e75d26ef7cb8ffe49a2",
@@ -11124,15 +11115,6 @@
       "path": "mta/locale/zh_TW/menu_settings.png",
       "size": 584,
       "sha256": "763db41607e17403540deeb80cc63cfe8fc527e90ac68de57701978e51c4be3c",
-      "patch_url": "",
-      "patch_asset_url": "",
-      "patch_sha256": "",
-      "patch_size": 0
-    },
-    {
-      "path": "mta/logs/logfile.txt",
-      "size": 9701,
-      "sha256": "bb4dd1755917473e2d490b3b9a6fbd2230f4b184de2fb122c2c02681fba5fe9a",
       "patch_url": "",
       "patch_asset_url": "",
       "patch_sha256": "",
