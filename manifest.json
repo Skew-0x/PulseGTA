@@ -1,0 +1,31 @@
+{
+  "version": "1.0.0",
+  "format": "GTAX3",
+  "algorithm": "LZMS",
+  "entries": 1361,
+  "files": 1270,
+  "total_raw_bytes": 12273793976,
+  "total_payload_bytes": 12273847370,
+  "total_packed_bytes": 3990463759,
+  "base_url": "https://github.com/Skew-0x/PulseGTA/releases/download/v1.0.0/",
+  "parts": [
+    {
+      "name": "pulse_gta.part001",
+      "size": 1992294400,
+      "sha256": "447db4921b9d93d47ef2494b9896b5dc0163aa52114a36663f8a61d82271aa25",
+      "url": "https://github.com/Skew-0x/PulseGTA/releases/download/v1.0.0/pulse_gta.part001"
+    },
+    {
+      "name": "pulse_gta.part002",
+      "size": 1992294400,
+      "sha256": "6d05d05840567b98412963cbd3809cb0117d99da6423271e5dd72fa9bc4037f5",
+      "url": "https://github.com/Skew-0x/PulseGTA/releases/download/v1.0.0/pulse_gta.part002"
+    },
+    {
+      "name": "pulse_gta.part003",
+      "size": 5874959,
+      "sha256": "9b573347ad04f300f3412d5f3c7db7a6af7685d751ce95816a952a89cca25912",
+      "url": "https://github.com/Skew-0x/PulseGTA/releases/download/v1.0.0/pulse_gta.part003"
+    }
+  ]
+}
