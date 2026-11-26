@@ -1,3 +1,5 @@
 pulse_gta.part*
 *.dl
 *.tmp
+.base_hash_cache.json
+.large_patches/
