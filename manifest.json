@@ -1,5 +1,5 @@
 {
-  "version": "1.0.10",
+  "version": "1.0.11",
   "format": "GTAX3",
   "algorithm": "LZMS",
   "entries": 1365,
@@ -4738,12 +4738,12 @@
     },
     {
       "path": "launcher/Launcher.exe",
-      "size": 12510208,
-      "sha256": "0bf125e92fe3924503c780dee3a6cffb6cb85dd04275d2376c74fc7921a596b4",
+      "size": 12422656,
+      "sha256": "d43d16f280bfa3457e2e74b3fa2442a69750f55a3a74fb4a446ef60278b2d376",
       "patch_url": "https://raw.githubusercontent.com/Skew-0x/PulseGTA/main/update/launcher/Launcher.exe",
       "patch_asset_url": "https://api.github.com/repos/Skew-0x/PulseGTA/contents/update/launcher/Launcher.exe?ref=main",
-      "patch_size": 12510208,
-      "patch_sha256": "0bf125e92fe3924503c780dee3a6cffb6cb85dd04275d2376c74fc7921a596b4",
+      "patch_size": 12422656,
+      "patch_sha256": "d43d16f280bfa3457e2e74b3fa2442a69750f55a3a74fb4a446ef60278b2d376",
       "gs": 0,
       "ge": 0,
       "fo": 0
