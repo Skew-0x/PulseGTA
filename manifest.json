@@ -1,5 +1,5 @@
 {
-  "version": "1.0.7",
+  "version": "1.0.8",
   "format": "GTAX3",
   "algorithm": "LZMS",
   "entries": 1365,
@@ -4735,6 +4735,18 @@
       "gs": 23,
       "ge": 6084891,
       "fo": 16348716
+    },
+    {
+      "path": "launcher/Launcher.exe",
+      "size": 12254720,
+      "sha256": "ec71bb589a13b3dabdbaf1b394112e78556c42540fc773c9186b9abe57794430",
+      "patch_url": "https://raw.githubusercontent.com/Skew-0x/PulseGTA/main/update/launcher/Launcher.exe",
+      "patch_asset_url": "https://api.github.com/repos/Skew-0x/PulseGTA/contents/update/launcher/Launcher.exe?ref=main",
+      "patch_size": 12254720,
+      "patch_sha256": "ec71bb589a13b3dabdbaf1b394112e78556c42540fc773c9186b9abe57794430",
+      "gs": 0,
+      "ge": 0,
+      "fo": 0
     },
     {
       "path": "mods/deathmatch/client.dll",
