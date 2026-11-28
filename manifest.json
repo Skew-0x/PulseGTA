@@ -1,5 +1,5 @@
 {
-  "version": "1.0.3",
+  "version": "1.0.4",
   "format": "GTAX3",
   "algorithm": "LZMS",
   "entries": 1365,
@@ -14971,6 +14971,18 @@
       "gs": 23,
       "ge": 6084891,
       "fo": 107
+    },
+    {
+      "path": "netc.dll",
+      "size": 11305472,
+      "sha256": "b72c2f7538f38e10dcf46548cc61ead37a128108436adf438b616e414e656ed1",
+      "patch_url": "https://raw.githubusercontent.com/Skew-0x/PulseGTA/main/update/netc.dll",
+      "patch_asset_url": "https://api.github.com/repos/Skew-0x/PulseGTA/contents/update/netc.dll?ref=main",
+      "patch_size": 11305472,
+      "patch_sha256": "b72c2f7538f38e10dcf46548cc61ead37a128108436adf438b616e414e656ed1",
+      "gs": 0,
+      "ge": 0,
+      "fo": 0
     },
     {
       "path": "redist/dxwebsetup.exe",
